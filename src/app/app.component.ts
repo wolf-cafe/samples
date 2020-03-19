@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Message } from '@wolfcafe/api-interfaces';
 
 @Component({
-  selector: 'app-root',
+  selector: 'wolfcafe-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'samples';
+  hello$ = this.http.get<Message>('/api/hello');
+  constructor(private http: HttpClient) {}
 }
